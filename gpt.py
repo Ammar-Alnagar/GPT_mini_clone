@@ -74,7 +74,7 @@ class Head(nn.Module):
 
         self.dropout = nn.Dropout(dropout)
 
-    def forward(self, x):
+    def forward(self, x):  #B->batch size , T-> time step == sequence length , C -> channels = embedding size 
         # input of size (batch, time-step, channels)
         # output of size (batch, time-step, head size)
         B,T,C = x.shape
@@ -87,7 +87,7 @@ class Head(nn.Module):
         wei = self.dropout(wei)
         # perform the weighted aggregation of the values
         v = self.value(x) # (B,T,hs)
-        out = wei @ v # (B, T, T) @ (B, T, hs) -> (B, T, hs)
+        out = wei @ v # (B, T, T) @ (B, T, hs) -> (B, T, hs)   matrix multiplication like einsum 
         return out
 
 class MultiHeadAttention(nn.Module):
