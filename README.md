@@ -1,4 +1,4 @@
-Here's a README file for a project named `GPT_mini_clone`:
+
 
 ---
 
